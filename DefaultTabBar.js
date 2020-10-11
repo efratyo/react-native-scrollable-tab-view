@@ -7,6 +7,7 @@ const {
   Text,
   View,
   Animated,
+  I18nManager
 } = ReactNative;
 const Button = require('./Button');
 
@@ -69,7 +70,7 @@ const DefaultTabBar = createReactClass({
 
     const translateX = this.props.scrollValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [0,  containerWidth / numberOfTabs],
+      outputRange: [0,  I18nManager.isRTL ? -(containerWidth / numberOfTabs) : containerWidth / numberOfTabs],
     });
     return (
       <View style={[styles.tabs, {backgroundColor: this.props.backgroundColor, }, this.props.style, ]}>
